@@ -12,11 +12,15 @@ setup(
     install_requires=[
         'PyYAML==3.11',
         'Jinja2==2.8',
-        'colander==1.3.1'
+        'colander==1.3.1',
+        'pycountry==1.20'
     ],
     entry_points={
-        "console_scripts": [
-            "pyresume = resume:main"
+        'console_scripts': [
+            'pyresume = resume:main'
+        ],
+        'pyresume.renderer': [
+            'jinja2 = resume.renderer:Jinja2Renderer'
         ]
     }
 )
