@@ -10,7 +10,6 @@ setup(
         'resume'
     ],
     install_requires=[
-        'PyYAML==3.11',
         'Jinja2==2.8',
         'colander==1.3.1',
         'pycountry==1.20'
