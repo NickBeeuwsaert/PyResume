@@ -1,11 +1,10 @@
 import colander
 
+from .mixin import PreserveMixin
 
-class Interest(colander.MappingSchema):
+
+class Interest(PreserveMixin, colander.MappingSchema):
     name = colander.SchemaNode(colander.String())
     keyword = colander.SequenceSchema(
         colander.SchemaNode(colander.String())
     )
-
-    def schema_type(self, **kw):
-        return colander.Mapping(unknown='preserve')

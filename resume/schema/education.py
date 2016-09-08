@@ -1,7 +1,9 @@
 import colander
 
+from .mixin import PreserveMixin
 
-class Education(colander.MappingSchema):
+
+class Education(PreserveMixin, colander.MappingSchema):
     institution = colander.SchemaNode(colander.String())
     area = colander.SchemaNode(colander.String())
     study_type = colander.SchemaNode(colander.String())
@@ -13,5 +15,3 @@ class Education(colander.MappingSchema):
         missing=[]
     )
 
-    def schema_type(self, **kw):
-        return colander.Mapping(unknown='preserve')

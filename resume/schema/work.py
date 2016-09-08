@@ -1,7 +1,9 @@
 import colander
 
+from .mixin import PreserveMixin
 
-class Work(colander.MappingSchema):
+
+class Work(PreserveMixin, colander.MappingSchema):
     company = colander.SchemaNode(colander.String())
     position = colander.SchemaNode(colander.String())
     url = colander.SchemaNode(
@@ -16,6 +18,3 @@ class Work(colander.MappingSchema):
         colander.SchemaNode(colander.String()),
         missing=[]
     )
-
-    def schema_type(self, **kw):
-        return colander.Mapping(unknown='preserve')

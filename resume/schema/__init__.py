@@ -1,21 +1,22 @@
 import colander
 
-from resume.schema.award import Award
-from resume.schema.basic import Basic
-from resume.schema.education import Education
-from resume.schema.interest import Interest
-from resume.schema.language import Language
-from resume.schema.meta import Meta
-from resume.schema.publication import Publication
-from resume.schema.reference import Reference
-from resume.schema.skill import Skill
-from resume.schema.volunteer import Volunteer
-from resume.schema.work import Work
+from .award import Award
+from .basic import Basic
+from .education import Education
+from .interest import Interest
+from .language import Language
+from .meta import Meta
+from .publication import Publication
+from .reference import Reference
+from .skill import Skill
+from .volunteer import Volunteer
+from .work import Work
+
+from .mixin import PreserveMixin
 
 
-# RESUME
-class Resume(colander.MappingSchema):
-    basic = Basic(unknown='preserve')
+class Resume(PreserveMixin, colander.MappingSchema):
+    basic = Basic()
     work = colander.SequenceSchema(Work(), missing=[])
     volunteer = colander.SequenceSchema(Volunteer(), missing=[])
     awards = colander.SequenceSchema(Award(), missing=[])

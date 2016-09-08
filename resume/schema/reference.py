@@ -1,9 +1,8 @@
 import colander
 
+from .mixin import PreserveMixin
 
-class Reference(colander.MappingSchema):
+
+class Reference(PreserveMixin, colander.MappingSchema):
     name = colander.SchemaNode(colander.String())
     reference = colander.SchemaNode(colander.String())
-
-    def schema_type(self, **kw):
-        return colander.Mapping(unknown='preserve')

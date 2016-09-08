@@ -1,7 +1,9 @@
 import colander
 
+from .mixin import PreserveMixin
 
-class Skill(colander.MappingSchema):
+
+class Skill(PreserveMixin, colander.MappingSchema):
     name = colander.SchemaNode(colander.String())
     level = colander.SchemaNode(colander.String())
     keywords = colander.SequenceSchema(
@@ -10,6 +12,3 @@ class Skill(colander.MappingSchema):
         ),
         missing=[]
     )
-
-    def schema_type(self, **kw):
-        return colander.Mapping(unknown='preserve')
